@@ -18,7 +18,7 @@
         <main class="content-wrapper">
             <section class="contact-hero">
                 <h2>Schreib mir</h2><br>
-                <p>Ich freue mich auf deine Nachricht!</p>
+                <p>Ich freue mich auf deine Nachricht!</p><br>
             </section>
 
             <form>
@@ -33,10 +33,19 @@
                 <textarea id="message" name="message" rows="4" required></textarea>
 
                 <button type="submit">Senden</button>
-            </form>
+           
+                <form id="contact-form">
+                    <!-- bestehende Felder bleiben gleich -->
+                    <div id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
+                    ✓ Nachricht gesendet! Ich melde mich bald.
+                    </div>
+              </form>
+
         </main>
 
         <footer></footer>
+
+        <div class="accessibility-container"></div>
         <script src="js/main.js" defer></script>
     </body>
 </html>

@@ -1,0 +1,33 @@
+<div class="accessibility-floater">
+    <button class="floater-btn" aria-label="Einstellungen öffnen">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" fill="currentColor"/>
+        <path d="M19.4 15C19.2669 15.3016 19.227 15.6362 19.285 15.9606C19.343 16.285 19.4963 16.5834 19.725 16.815C19.955 17.045 20.1 17.3474 20.1 17.6625C20.1 17.9776 19.955 18.28 19.725 18.51L19.51 18.725C19.28 18.955 18.9776 19.1 18.6625 19.1C18.3474 19.1 18.045 18.955 17.815 18.725C17.5834 18.4963 17.285 18.343 16.9606 18.285C16.6362 18.227 16.3016 18.2669 16 18.4C15.6984 18.5331 15.3638 18.573 15.0394 18.515C14.715 18.457 14.4166 18.3037 14.185 18.075C13.955 17.845 13.81 17.5426 13.81 17.2275C13.81 16.9124 13.955 16.61 14.185 16.38L14.4 16.165C14.7016 16.0319 15.0362 15.992 15.3606 16.05C15.685 16.108 15.9834 16.2613 16.215 16.49C16.445 16.72 16.59 17.0224 16.59 17.3375C16.59 17.6526 16.445 17.955 16.215 18.185L15.51 18.89" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+    
+    <div class="accessibility-panel" hidden>
+      <div class="panel-header">
+        <h4>Barrierefreiheit</h4>
+        <button class="close-panel">&times;</button>
+      </div>
+      
+      <div class="panel-section">
+        <label>Farbschema</label>
+        <div class="toggle-group">
+          <button data-theme="light">Hell</button>
+          <button data-theme="dark">Dunkel</button>
+          <button data-theme="auto">Auto</button>
+        </div>
+      </div>
+      
+      <div class="panel-section">
+        <label>Schriftgröße</label>
+        <div class="font-size-controls">
+          <button data-size="-">A-</button>
+          <span class="current-size">100%</span>
+          <button data-size="+">A+</button>
+        </div>
+      </div>
+    </div>
+  </div>
