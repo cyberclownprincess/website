@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/style.css"/>
         <link rel="icon" href="img/PreLogo.svg" type="image/svg+xml"/>
         <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
     <body>
@@ -21,7 +22,16 @@
                 <p>Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.</p><br>
             </section>
          
-            <form id="contact-form">
+            <form 
+                action="https://formspree.io/f/xvgakvoq"
+                method="POST"
+                id="contact-form">
+
+                <!-- Honeypot -->
+                <input type="checkbox" name="_honeypot" style="display:none;" tabindex="-1">
+
+                <!-- Hidden Fields -->
+                <input type="hidden" name="_replyto" value="rikafederov@gmail.com">
 
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required />
@@ -31,6 +41,9 @@
     
                 <label for="message">Nachricht:</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
+
+                <!-- reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="6LdpDS0rAAAAAAL0fZmqC-CqWXFNrmOEH-2sW4ed"></div>
     
                 <button type="submit">Senden</button>
 
