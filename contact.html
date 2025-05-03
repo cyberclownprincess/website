@@ -17,29 +17,27 @@
 
         <main class="content-wrapper">
             <section class="contact-hero">
-                <h2>Schreib mir</h2><br>
-                <p>Ich freue mich auf deine Nachricht!</p><br>
+                <h2>Lass uns sprechen!</h2>
+                <p>Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.</p><br>
             </section>
-
-            <form>
+         
+            <form id="contact-form">
 
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required />
-
+    
                 <label for="email">E-Mail:</label>
                 <input type="email" id="email" name="email" required />
-
+    
                 <label for="message">Nachricht:</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
-
+    
                 <button type="submit">Senden</button>
-           
-                <form id="contact-form">
-                    <!-- bestehende Felder bleiben gleich -->
-                    <div id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
-                    ✓ Nachricht gesendet! Ich melde mich bald.
-                    </div>
-              </form>
+
+                <div id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
+                ✓ Nachricht gesendet! Ich melde mich bald.
+                </div>
+            </form>
 
         </main>
 
