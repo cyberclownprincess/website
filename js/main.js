@@ -1,203 +1,191 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  // Lade Header, Footer und Accessibility-Widget
+  // Utility-Funktion für Komponentenladung
   const loadComponent = async (selector, file) => {
     try {
-      const res = await fetch(file);
-      const html = await res.text();
-      document.querySelector(selector).innerHTML = html;
-      return true; // Erfolgsstatus zurückgeben
+      const response = await fetch(file);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      document.querySelector(selector).innerHTML = await response.text();
+      return true;
     } catch (error) {
       console.error(`Fehler beim Laden von ${file}:`, error);
       return false;
     }
   };
 
-  // Komponenten laden
-  await loadComponent("header", "components/header.html");
-  await loadComponent("footer", "components/footer.html");
-  const widgetLoaded = await loadComponent(".accessibility-container", "components/accessibility-widget.html");
+  // Initialisierung
+  try {
+    const [headerLoaded, footerLoaded, widgetLoaded] = await Promise.all([
+      loadComponent("header", "components/header.html"),
+      loadComponent("footer", "components/footer.html"),
+      loadComponent(".accessibility-container", "components/accessibility-widget.html")
+    ]);
 
-  // TODO: JSON Übersetzungen
-  // . Sprachbutton initialisieren 
-  const languageButton = document.getElementById('language-toggle-btn');
-  if (languageButton) {
+    // Sprachumschaltung
+    const initLanguageToggle = () => {
+      const languageButton = document.getElementById('language-toggle-btn');
+      if (!languageButton) return;
+
       languageButton.addEventListener('click', () => {
-          const currentLang = document.documentElement.lang || 'de';
-          const newLang = currentLang === 'de' ? 'en' : 'de';
-          
-          document.documentElement.lang = newLang;
-          languageButton.textContent = newLang === 'de' ? 'DE | EN' : 'EN | DE';
-          localStorage.setItem('preferredLang', newLang);
-          
-          console.log("Sprache geändert zu:", newLang);
-          alert(`Sprache gewechselt zu ${newLang.toUpperCase()}`);
+        const currentLang = document.documentElement.lang || 'de';
+        const newLang = currentLang === 'de' ? 'en' : 'de';
+        
+        document.documentElement.lang = newLang;
+        languageButton.textContent = newLang === 'de' ? 'DE | EN' : 'EN | DE';
+        localStorage.setItem('preferredLang', newLang);
+        
+        console.log("Sprache geändert zu:", newLang);
+        // alert durch visuelle Notifikation ersetzen
       });
-  }
+    };
 
-  //TODO: Funktional machen
-  // Kontaktformular 
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
+    // Kontaktformular
+    const initContactForm = () => {
+      const contactForm = document.getElementById('contact-form');
+      if (!contactForm) return;
+
       contactForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          try {
-              await new Promise(resolve => setTimeout(resolve, 1000));
-              document.getElementById('form-success').style.display = 'block';
-              contactForm.reset();
-          } catch (error) {
-              alert("Fehler! Bitte versuche es später erneut.");
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        
+        try {
+          submitBtn.disabled = true;
+          
+          if (typeof grecaptcha !== 'undefined') {
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+              showNotification("Bitte bestätige, dass du kein Roboter bist", 'error');
+              return;
+            }
           }
-      });
-  }
 
-  // Accessibility-Widget initialisieren NACH dem Laden
-  if (widgetLoaded) {
-    initAccessibility(); 
+          const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (!response.ok) throw new Error(await response.text());
+          
+          showNotification("Nachricht gesendet!", 'success');
+          contactForm.reset();
+          if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
+        } catch (error) {
+          console.error("Formularfehler:", error);
+          showNotification("Fehler beim Senden", 'error');
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    };
+
+    // Accessibility-Widget
+    if (widgetLoaded) {
+      initAccessibility();
+    }
+
+    initLanguageToggle();
+    initContactForm();
+
+  } catch (error) {
+    console.error("Initialisierungsfehler:", error);
   }
 });
 
-// Accessibility-Funktionen auslagern
+// Accessibility-Funktionen
 function initAccessibility() {
-  // 1. Alle benötigten Elemente selektieren
-  const floaterBtn = document.querySelector('.floater-btn');
-  const panel = document.querySelector('.accessibility-panel');
-  const closeBtn = document.querySelector('.close-panel');
-  const themeBtns = document.querySelectorAll('[data-theme]');
-  const fontSizeBtns = document.querySelectorAll('[data-size]');
-  const currentSizeDisplay = document.querySelector('.current-size');
+  const selectElement = (selector) => document.querySelector(selector);
+  const selectAllElements = (selector) => document.querySelectorAll(selector);
 
-  // 2. Existenzprüfung
-  if (!floaterBtn || !panel || !closeBtn || themeBtns.length === 0 || fontSizeBtns.length === 0 || !currentSizeDisplay) {
-    console.error("Fehlende Accessibility-Elemente:", {
-      floaterBtn, panel, closeBtn, themeBtns, fontSizeBtns, currentSizeDisplay
-    });
+  const elements = {
+    floaterBtn: selectElement('.floater-btn'),
+    panel: selectElement('.accessibility-panel'),
+    closeBtn: selectElement('.close-panel'),
+    themeBtns: selectAllElements('[data-theme]'),
+    fontSizeBtns: selectAllElements('[data-size]'),
+    currentSizeDisplay: selectElement('.current-size')
+  };
+
+  // Validierung
+  if (Object.values(elements).some(el => el === null || (Array.isArray(el) && el.length === 0))) {
+    console.error("Fehlende Elemente:", elements);
     return;
   }
 
-  // 3. Panel-Steuerung
-  floaterBtn.addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
+  // Panel-Steuerung
+  elements.floaterBtn.addEventListener('click', () => {
+    elements.panel.hidden = !elements.panel.hidden;
   });
 
-  closeBtn.addEventListener('click', () => {
-    panel.hidden = true;
+  elements.closeBtn.addEventListener('click', () => {
+    elements.panel.hidden = true;
   });
 
-  // 4. Theme-Switch
-  themeBtns.forEach(btn => {
+  // Theme-Switch
+  elements.themeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const theme = btn.dataset.theme;
       
       // UI aktualisieren
-      themeBtns.forEach(b => b.style.background = 'transparent');
+      elements.themeBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = 'transparent';
+      });
+      btn.classList.add('active');
       btn.style.background = theme === 'auto' ? 'var(--color-accent)' : 'var(--color-bg)';
       
       // Theme anwenden
-      if (theme === 'auto') {
-        document.body.classList.remove('force-light', 'force-dark');
-        localStorage.removeItem('theme');
-      } else {
-        document.body.classList.remove('force-light', 'force-dark');
-        document.body.classList.add(`force-${theme}`);
-        localStorage.setItem('theme', theme);
-      }
-    });
-  });
-
-  // 5. Schriftgröße
-  fontSizeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentSize = parseInt(document.documentElement.style.getPropertyValue('--font-scale') || '100');
-      const newSize = btn.dataset.size === '+' ? currentSize + 10 : currentSize - 10;
+      document.body.classList.remove('force-light', 'force-dark');
+      if (theme !== 'auto') document.body.classList.add(`force-${theme}`);
       
-      if (newSize >= 80 && newSize <= 150) {
-        document.documentElement.style.setProperty('--font-scale', `${newSize}%`);
-        currentSizeDisplay.textContent = `${newSize}%`;
-        localStorage.setItem('fontScale', newSize);
-      }
+      localStorage.setItem('theme', theme === 'auto' ? '' : theme);
+      updateIcons();
     });
   });
 
-  // 6. Gespeicherte Einstellungen laden
+  // Schriftgröße
+elements.fontSizeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const currentSize = parseInt(document.documentElement.style.getPropertyValue('--font-scale') || 100);
+    const newSize = Math.min(150, Math.max(80, 
+      btn.dataset.size === '+' ? currentSize + 10 : currentSize - 10
+    ));
+    
+    document.documentElement.style.setProperty('--font-scale', `${newSize}%`);
+    elements.currentSizeDisplay.textContent = `${newSize}%`;
+    localStorage.setItem('fontScale', newSize);
+  });
+});
+
+  // Initialisierung
   const savedTheme = localStorage.getItem('theme');
-  const savedSize = localStorage.getItem('fontScale');
+  const savedSize = localStorage.getItem('fontScale') || 100;
 
-  // Theme wiederherstellen
   if (savedTheme) {
-    document.body.classList.add(`force-${savedTheme}`);
-    document.querySelector(`[data-theme="${savedTheme}"]`).style.background = 
-      savedTheme === 'auto' ? 'var(--color-accent)' : 'var(--color-bg)';
+    document.querySelector(`[data-theme="${savedTheme}"]`)?.click();
   } else {
-    document.querySelector('[data-theme="auto"]').style.background = 'var(--color-accent)';
+    document.querySelector('[data-theme="auto"]')?.click();
   }
 
-  // Schriftgröße wiederherstellen
-  if (savedSize) {
-    document.documentElement.style.setProperty('--font-scale', `${savedSize}%`);
-    currentSizeDisplay.textContent = `${savedSize}%`;
-  } else {
-    document.documentElement.style.setProperty('--font-scale', '100%');
-    currentSizeDisplay.textContent = '100%';
-  }
+  document.documentElement.style.setProperty('--font-scale', `${savedSize}%`);
+  elements.currentSizeDisplay.textContent = `${savedSize}%`;
 }
 
-// Icon-Theme-Wechsel
+// Hilfsfunktionen
 function updateIcons() {
   const isDark = document.body.classList.contains('force-dark');
   document.querySelectorAll('.theme-icon').forEach(icon => {
     const newSrc = isDark ? icon.dataset.dark : icon.dataset.light;
-    if (icon.src !== newSrc) icon.src = newSrc;
+    if (newSrc && icon.src !== newSrc) icon.src = newSrc;
   });
 }
 
-// Initial und bei Änderungen
-updateIcons();
+function showNotification(message, type = 'info') {
+  // Implementierung einer visuellen Notifikation
+  console[type](message);
+}
+
+// Observer für Theme-Änderungen
 new MutationObserver(updateIcons).observe(document.body, {
   attributes: true,
   attributeFilter: ['class']
 });
-
-// CONTACT 
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    
-    try {
-      submitBtn.disabled = true;
-      
-      // reCAPTCHA validieren
-      const recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert("Bitte bestätige, dass du kein Roboter bist");
-        submitBtn.disabled = false;
-        return;
-      }
-
-      const formData = new FormData(contactForm);
-      formData.append('g-recaptcha-response', recaptchaResponse);
-
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        document.getElementById('form-success').style.display = 'block';
-        contactForm.reset();
-        grecaptcha.reset();
-      } else {
-        throw new Error('Formular konnte nicht gesendet werden');
-      }
-    } catch (error) {
-      console.error("Fehler:", error);
-      alert("Fehler! Bitte versuche es später erneut.");
-    } finally {
-      submitBtn.disabled = false;
-    }
-  });
-}
