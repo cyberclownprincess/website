@@ -140,3 +140,64 @@ function initAccessibility() {
     currentSizeDisplay.textContent = '100%';
   }
 }
+
+// Icon-Theme-Wechsel
+function updateIcons() {
+  const isDark = document.body.classList.contains('force-dark');
+  document.querySelectorAll('.theme-icon').forEach(icon => {
+    const newSrc = isDark ? icon.dataset.dark : icon.dataset.light;
+    if (icon.src !== newSrc) icon.src = newSrc;
+  });
+}
+
+// Initial und bei Änderungen
+updateIcons();
+new MutationObserver(updateIcons).observe(document.body, {
+  attributes: true,
+  attributeFilter: ['class']
+});
+
+// CONTACT 
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    
+    try {
+      submitBtn.disabled = true;
+      
+      // reCAPTCHA validieren
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Bitte bestätige, dass du kein Roboter bist");
+        submitBtn.disabled = false;
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      formData.append('g-recaptcha-response', recaptchaResponse);
+
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        document.getElementById('form-success').style.display = 'block';
+        contactForm.reset();
+        grecaptcha.reset();
+      } else {
+        throw new Error('Formular konnte nicht gesendet werden');
+      }
+    } catch (error) {
+      console.error("Fehler:", error);
+      alert("Fehler! Bitte versuche es später erneut.");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+}
