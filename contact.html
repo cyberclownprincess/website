@@ -18,8 +18,8 @@
 
         <main class="content-wrapper">
             <section class="contact-hero">
-                <h2>Lass uns sprechen!</h2>
-                <p>Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.</p><br>
+                <h2 data-i18n="contactTitle">Lass uns sprechen!</h2>
+                <p data-i18n="contactHeroText">Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.</p><br>
             </section>
          
             <form 
@@ -33,21 +33,21 @@
                 <!-- Hidden Fields -->
                 <input type="hidden" name="_replyto" value="rikafederov@gmail.com">
 
-                <label for="name">Name:</label>
+                <label data-i18n="formName" for="name">Name:</label>
                 <input type="text" id="name" name="name" required />
     
-                <label for="email">E-Mail:</label>
+                <label data-i18n="formEmail" for="email">E-Mail:</label>
                 <input type="email" id="email" name="email" required />
     
-                <label for="message">Nachricht:</label>
+                <label data-i18n="formMessage" for="message">Nachricht:</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
 
                 <!-- reCAPTCHA -->
                 <div class="g-recaptcha" data-sitekey="6LdpDS0rAAAAAAL0fZmqC-CqWXFNrmOEH-2sW4ed"></div>
     
-                <button type="submit">Senden</button>
+                <button data-i18n="formSubmit" type="submit">Senden</button>
 
-                <div id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
+                <div data-i18n="formSucces" id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
                 ✓ Nachricht gesendet! Ich melde mich bald.
                 </div>
             </form>
