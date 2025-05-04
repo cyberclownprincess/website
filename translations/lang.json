@@ -1,0 +1,70 @@
+{
+    "de": {
+      "heroTitle": "UX-Design, das verbindet – Ästhetik, Struktur und echte Nutzerzentrierung",
+      "heroText": "Ich kombiniere kreative Leidenschaft mit einem klaren Fokus auf Nutzerbedürfnisse. Gemeinsam gestalten wir digitale Produkte, die nicht nur gut aussehen, sondern sich richtig gut anfühlen – intuitiv, nachhaltig und auf dein Ziel abgestimmt.",
+      "projectsTitle": "Einblick ins aktuelle Projekt",
+      "projectsComingSoon": "Gutes UX braucht Zeit. Ich arbeite derzeit an drei Herzensprojekten rund um Inklusion, Elternschaft und digitale Bildung.",
+      "contactCta": "Lass uns sprechen!",
+      "contactText": "Du hast eine Idee, ein Projekt oder brauchst einfach UX-Unterstützung? Schreib mir – ich freue mich auf ein unverbindliches Kennenlerngespräch.",
+  
+      "aboutTitle": "Über mich",
+      "aboutText": "Ich bin angehende UX-Designerin mit einem Gespür für nutzerzentrierte Lösungen und einem klaren Blick für Details. Mein Ziel: digitale Erlebnisse zu gestalten, die intuitiv, sinnvoll und einfach angenehm sind.",
+      "faqTitle": "FAQs",
+      "faqIntro": "Was du über UX-Design und meine Arbeitsweise wissen solltest – hier findest du die wichtigsten Antworten auf einen Blick.",
+      "faqQuestion1": "Was ist UX-Design und warum interessiert es dich?",
+      "faqAnswer1": "UX-Design bedeutet, digitale Produkte zu gestalten, die sich intuitiv nutzen lassen und echten Mehrwert bieten. Mich begeistert daran besonders, wie durchdachtes Design das Leben einfacher machen kann. Als Quereinsteigerin bringe ich frische Perspektiven und einen unvoreingenommenen Blick mit – das hilft, echte Nutzerbedürfnisse zu erkennen und kreative Lösungen zu entwickeln.",
+      "faqQuestion2": "Warum hast du dich für den Quereinstieg entschieden?",
+      "faqAnswer2": "Ich habe mich bewusst für den Quereinstieg entschieden, weil ich meine Leidenschaft für Design und Technik mit meinem strategischen Denken verbinden wollte. In meinem bisherigen Werdegang habe ich gelernt, komplexe Probleme strukturiert zu analysieren – jetzt setze ich das im UX-Design kreativ um.",
+      "faqQuestion3": "Was sind deine Schwerpunkte im UX-Design?",
+      "faqAnswer3": "Mich reizt besonders der Bereich, wo UX-Design auf gesellschaftliche Herausforderungen trifft. Ich arbeite am liebsten an Konzepten, die inklusiv gedacht sind, echten Mehrwert schaffen und sich an den Bedürfnissen echter Menschen orientieren – nicht an Buzzwords.",
+  
+      "contactTitle": "Lass uns sprechen!",
+      "contactHeroText": "Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.",
+      "formName": "Name:",
+      "formEmail": "E-Mail:",
+      "formMessage": "Nachricht:",
+      "formSubmit": "Senden",
+      "formSuccess": "✓ Nachricht gesendet! Ich melde mich bald.",
+  
+      "projectsHeader": "Meine Projekte – coming soon",
+      "projectsText": "Gutes UX braucht Zeit. Ich arbeite derzeit an drei Herzensprojekten rund um Inklusion, Elternschaft und digitale Bildung. Bald kannst du hier mehr darüber erfahren – mit echten Einblicken in meinen Designprozess.",
+  
+
+      "privacyLink": "Datenschutz",
+      "imprintLink": "Impressum"
+    },
+
+    "en": {
+      "heroTitle": "UX design that connects – aesthetics, structure, and true user-centricity",
+      "heroText": "I combine creative passion with a clear focus on user needs. Together, we'll craft digital products that not only look great but feel right – intuitive, sustainable, and tailored to your goals.",
+      "projectsTitle": "Preview of current project",
+      "projectsComingSoon": "Great UX takes time. I'm currently working on three passion projects around inclusion, parenthood, and digital education.",
+      "contactCta": "Let's talk!",
+      "contactText": "Have an idea, project, or need UX support? Reach out – I'd love to chat for a no-strings-attached consultation.",
+  
+      "aboutTitle": "About me",
+      "aboutText": "I'm an aspiring UX designer with a knack for user-centered solutions and a sharp eye for detail. My goal: to create digital experiences that are intuitive, meaningful, and simply enjoyable.",
+      "faqTitle": "FAQs",
+      "faqIntro": "What you should know about UX design and my approach – here are the key answers at a glance.",
+      "faqQuestion1": "What is UX design and why are you passionate about it?",
+      "faqAnswer1": "UX design is about creating digital products that are intuitive to use and deliver real value. What excites me most is how thoughtful design can make life easier. As a career changer, I bring fresh perspectives and an unbiased approach – helping to identify genuine user needs and develop creative solutions.",
+      "faqQuestion2": "Why did you choose to switch careers?",
+      "faqAnswer2": "I chose to pivot into UX design to merge my passion for design and technology with my strategic thinking. My background taught me to analyze complex problems methodically – now I apply that creatively in UX design.",
+      "faqQuestion3": "What are your focus areas in UX?",
+      "faqAnswer3": "I'm particularly drawn to where UX meets societal challenges. I love working on inclusive concepts that create real value and address actual human needs – not just buzzwords.",
+    
+      "contactTitle": "Let's connect!",
+      "contactHeroText": "Whether it's a project idea, quick chat, or first meeting – I'd love to hear from you. Drop me a message, and we'll explore how we can bring your vision to life.",
+      "formName": "Name:",
+      "formEmail": "Email:",
+      "formMessage": "Message:",
+      "formSubmit": "Send",
+      "formSuccess": "✓ Message sent! I'll get back to you soon.",
+  
+      "projectsHeader": "My projects – coming soon",
+      "projectsText": "Great UX takes time. I'm currently working on three passion projects around inclusion, parenthood, and digital education. Stay tuned for behind-the-scenes insights into my design process.",
+  
+      "privacyLink": "Privacy Policy",
+      "imprintLink": "Imprint"
+    }
+  }
