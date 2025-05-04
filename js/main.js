@@ -5,24 +5,27 @@
  * @param {string} lang - Sprachcode ('de' oder 'en')
  */
 async function loadLanguage(lang) {
+  
   try {
     const response = await fetch('../translations/lang.json');
     if (!response.ok) throw new Error('Übersetzungen konnten nicht geladen werden');
     const translations = await response.json();
 
-    // Texte ersetzen
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const key = element.dataset.i18n;
-      if (translations[lang]?.[key]) {
-        element.textContent = translations[lang][key];
-      } else {
-        console.warn(`Fehlende Übersetzung für: ${key}`);
-      }
-    });
+       // Texte ersetzen 
+       document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.dataset.i18n;
+        if (translations[lang]?.[key]) {
+          element.innerHTML = translations[lang][key]; 
+        } else {
+          console.warn(`Fehlende Übersetzung für: ${key}`);
+        }
+      });
 
-    // Logo wechseln
     const logo = document.getElementById('header-logo');
-    if (logo) logo.src = `img/RikaLogo_${lang === 'de' ? 'hell' : 'dunkel'}.svg`;
+    if (logo) {
+      const isDarkMode = document.body.classList.contains('force-dark');
+      logo.src = isDarkMode ? 'img/RikaLogo_dunkel.svg' : 'img/RikaLogo_hell.svg';
+    }
 
   } catch (error) {
     console.error('Fehler beim Laden der Übersetzungen:', error);
@@ -33,7 +36,7 @@ async function loadLanguage(lang) {
  * Initialisiert die Sprachumschaltung
  */
 function initLanguage() {
-  const savedLang = localStorage.getItem('preferredLang') || 'de';
+  const savedLang = localStorage.getItem('preferredLang') || 'en';
   document.documentElement.lang = savedLang;
   loadLanguage(savedLang);
 
@@ -122,6 +125,17 @@ function initAccessibility() {
   if (savedTheme) select(`[data-theme="${savedTheme}"]`)?.click();
   document.documentElement.style.setProperty('--font-scale', `${savedSize}%`);
   elements.currentSizeDisplay.textContent = `${savedSize}%`;
+
+  new MutationObserver(() => {
+    const logo = document.getElementById('header-logo');
+    if (logo) {
+      const isDarkMode = document.body.classList.contains('force-dark');
+      logo.src = isDarkMode ? 'img/RikaLogo_dunkel.svg' : 'img/RikaLogo_hell.svg';
+    }
+  }).observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
 }
 
 // Hilfsfunktion für Icons (Dark/Light)
