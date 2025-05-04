@@ -12,6 +12,8 @@
   --color-header-bg: #F8FCFF;
   --color-border: #000000;
   --color-text: #000000;
+  --link-color: #163064;      
+  --link-visited-color: #5B6E92; 
 }
 
 /* DARK MODE*/ 
@@ -24,6 +26,8 @@ body.force-dark {
   --color-header-bg: #163064;
   --color-border: #FFFFFF;
   --color-text: #FFFFFF;
+  --link-color: #F1FAFF;   
+  --link-visited-color: #BAEAFF;
 }
 
 body.force-dark input,
@@ -44,6 +48,7 @@ body.force-dark textarea {
 html {
   scroll-behavior: smooth;
   height: 100%;
+  font-size: calc(var(--font-scale, 100%) * 1px);
 }
 
 body {
@@ -337,7 +342,7 @@ body.force-dark .toggle-group button.active {
 
 .toggle-group button.active {
   background: var(--color-accent) !important;
-  border-color: var(--color-accent);
+  border-color: var(--color-accent) ;
 }
 
 .font-size-controls {
@@ -673,6 +678,37 @@ button[type="submit"]:disabled::after {
 .privacy-content ul {
   padding-left: 2rem;
   margin: 1rem 0;
+}
+
+.privacy-content a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.privacy-content a:visited {
+  color: var(--link-visited-color);
+}
+
+.privacy-content a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* IMPRINT */
+.imprint-content a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.imprint-content a:visited {
+  color: var(--link-visited-color);
+}
+
+.imprint-content a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 /* MEDIA QUERIES */
