@@ -1,60 +1,103 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="description" content="UX-Design-Portfolio von Rika"/>
-        <meta name="author" content="Rika"/>
-        <meta http-equiv="refresh" content="0; url=protection.html">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zugang geschützt</title>
+  <style>
+    body {
+      background-color: #f1faff;
+      color: #090c0d;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 300px;
+    }
+    input {
+      padding: 0.8rem;
+      border: 1px solid #5B6E92;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    button {
+      background-color: #5B6E92;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #163064;
+    }
+    .dots span {
+      font-size: 2rem;
+      animation: blink 1.5s infinite;
+    }
+    .dots span:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    .dots span:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+    .error {
+      color: #d32f2f;
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Zugang zur Website</h1>
+  <div class="password-form">
+    <input type="password" id="password" placeholder="Passwort eingeben">
+    <button onclick="checkPassword()">Zugang erhalten</button>
+    <p id="error" class="error">Falsches Passwort</p>
+  </div>
+  <div class="dots">
+    <span>.</span><span>.</span><span>.</span>
+  </div>
 
-        <title>UX-DESIGN BY RIKA</title>
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="icon" href="img/PreLogo.svg" type="image/svg+xml"/>
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <header></header>
-
-        <main class="content-wrapper">
-            <section class="hero">
-                <img src="img/Logo Animation.gif" alt="Logo Animation" style="width:450px; height:auto;">
-                <div class="hero-content">
-                    <h1 data-i18n="heroTitle">UX-Design, das verbindet – Ästhetik, Struktur und echte Nutzerzentrierung</h1><br>
-                    <p data-i18n="heroText">Ich kombiniere kreative Leidenschaft mit einem klaren Fokus auf Nutzerbedürfnisse. Gemeinsam gestalten wir digitale Produkte, die nicht nur gut aussehen, sondern sich richtig gut anfühlen – intuitiv, nachhaltig und auf dein Ziel abgestimmt.</p>
-                    <div class="button-group">
-                        <a href="about.html" class="cta-button-1" data-i18n="ctaButton1">Mehr erfahren</a>
-                        <a href="contact.html" class="cta-button-2" data-i18n="ctaButton2">Kontakt</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="projects">
-                <h3 data-i18n="projectsTitle">Einblick ins aktuelle Projekt</h3>
-                <article class="project-card">
-                    <div class="project-content">
-                      <img src="img/MamAid.png" alt="Projektvorschau" class="project-image">
-                      <h3 data-i18n="projectCardTitle" class="project-title">Projektname</h3>
-                      <p data-i18n="projectCardText" class="project-description">
-                        Beschreibung
-                      </p>
-                      <a href="projects.html" class="cta-button-1" data-i18n="ctaButton1">Mehr erfahren</a>
-                    </div>
-                  </article>
-            </section>
-
-            <br><br>
-
-            <section class="contact">
-                <h3 data-i18n="contactCta">Lass uns sprechen!</h3>
-                <p data-i18n="contactText">Du hast eine Idee, ein Projekt oder brauchst einfach UX-Unterstützung? Schreib mir – ich freue mich auf ein unverbindliches Kennenlerngespräch.</p><br>
-                <a href="contact.html" class="cta-button-2" data-i18n="ctaButton2">Kontakt</a>
-            </section>
-        </main>
-
-        <footer></footer>
-
-        <div class="accessibility-container"></div>
-        <script src="js/main.js" defer></script>
-    </body>
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      const errorElement = document.getElementById('error');
+      
+      if (password === "140400") {
+        sessionStorage.setItem('authenticated', 'true');
+        window.location.href = "home.html"; 
+      } else {
+        errorElement.style.display = 'block';
+        document.getElementById('password').value = '';
+      }
+    }
+    
+    document.getElementById('password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+  </script>
+</body>
 </html>

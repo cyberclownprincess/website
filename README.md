@@ -4,7 +4,7 @@
 Dies ist mein Portfolio-Projekt. Es besteht aus mehreren Seiten, die meine Projekte, meine Philosophie und Kontaktmöglichkeiten darstellen. Das Design ist minimalistisch und benutzerfreundlich, mit einem Fokus auf UX-Design-Prinzipien.
 
 ## Projektstruktur
-- **index.html** – Startseite
+- **home.html** – Startseite
 - **about.html** – Über mich
 - **projects.html** – Projekte
 - **contact.html** – Kontaktseite
