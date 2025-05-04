@@ -102,6 +102,8 @@ function initAccessibility() {
       document.body.classList.remove('force-light', 'force-dark');
       if (theme !== 'auto') document.body.classList.add(`force-${theme}`);
       localStorage.setItem('theme', theme === 'auto' ? '' : theme);
+      elements.themeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       updateIcons();
     });
   });
@@ -122,7 +124,10 @@ function initAccessibility() {
   // Initialisierung
   const savedTheme = localStorage.getItem('theme');
   const savedSize = localStorage.getItem('fontScale') || 100;
-  if (savedTheme) select(`[data-theme="${savedTheme}"]`)?.click();
+  if (savedTheme) {
+    const btn = select(`[data-theme="${savedTheme}"]`);
+    btn?.click(); // Triggert auch .active + updateIcons
+  }
   document.documentElement.style.setProperty('--font-scale', `${savedSize}%`);
   elements.currentSizeDisplay.textContent = `${savedSize}%`;
 
