@@ -3,7 +3,6 @@
       "heroTitle": "UX-Design, das verbindet – Ästhetik, Struktur und echte Nutzerzentrierung",
       "heroText": "Ich kombiniere kreative Leidenschaft mit einem klaren Fokus auf Nutzerbedürfnisse. Gemeinsam gestalten wir digitale Produkte, die nicht nur gut aussehen, sondern sich richtig gut anfühlen – intuitiv, nachhaltig und auf dein Ziel abgestimmt.",
       "projectsTitle": "Einblick ins aktuelle Projekt",
-      "projectsComingSoon": "Gutes UX braucht Zeit. Ich arbeite derzeit an drei Herzensprojekten rund um Inklusion, Elternschaft und digitale Bildung.",
       "contactCta": "Lass uns sprechen!",
       "contactText": "Du hast eine Idee, ein Projekt oder brauchst einfach UX-Unterstützung? Schreib mir – ich freue mich auf ein unverbindliches Kennenlerngespräch.",
   
@@ -17,6 +16,16 @@
       "faqAnswer2": "Ich habe mich bewusst für den Quereinstieg entschieden, weil ich meine Leidenschaft für Design und Technik mit meinem strategischen Denken verbinden wollte. In meinem bisherigen Werdegang habe ich gelernt, komplexe Probleme strukturiert zu analysieren – jetzt setze ich das im UX-Design kreativ um.",
       "faqQuestion3": "Was sind deine Schwerpunkte im UX-Design?",
       "faqAnswer3": "Mich reizt besonders der Bereich, wo UX-Design auf gesellschaftliche Herausforderungen trifft. Ich arbeite am liebsten an Konzepten, die inklusiv gedacht sind, echten Mehrwert schaffen und sich an den Bedürfnissen echter Menschen orientieren – nicht an Buzzwords.",
+      "faqQuestion4": "Welche Projekte hast du bisher gemacht?",
+      "faqAnswer4": "Aktuell stecke ich in der Planungsphase von drei Projekten, die mir besonders am Herzen liegen:",
+      "faqProject1": "<b>MamAid</b> – eine Community-Plattform für Mütter, vor allem für Erstlingsmütter oder Frauen ohne starkes soziales Netz. Der Fokus liegt auf Austausch, Unterstützung und einem Gefühl von „Ich bin nicht allein“.",
+      "faqProject2": "<b>IncluCook</b> – eine Website, die Rezepte für Menschen mit körperlichen oder psychischen Einschränkungen zugänglich macht. Von intuitiver Navigation bis zu leicht verständlichen Rezeptschritten: Barrierefreiheit ist hier das Kernkonzept.",
+      "faqProject3": "(Arbeitstitel) – eine App, die Lehrkräften hilft, digitale Medienkompetenz in den Unterricht zu integrieren – und gleichzeitig Grundschulkinder individuell unterstützt, besonders bei Themen wie Konzentration oder Lesefähigkeit.",
+      "faqAnswer4End": "Auch wenn noch nichts davon live ist, zeigen diese Projekte, woran ich glaube: Design kann gesellschaftlich relevant sein – und genau da will ich hin.",
+      "faqQuestion5": "Wie gehst du bei einem Designprozess vor?",
+      "faqAnswer5": "Ich arbeite strukturiert, empathisch und iterativ. Jedes Projekt startet bei mir mit einem Notion-Board – dort sammle ich alles: von Research bis Testing. Ich führe Gespräche mit echten Nutzer:innen, bevor ich eine einzige Wireframe zeichne. Nur so kann ich wirklich verstehen, was gebraucht wird. Darauf folgt ein agiler Prozess aus Ideen, Prototyping und kontinuierlichem Feedback. Mir ist wichtig, dass die Zielgruppe nicht nur am Anfang mitgedacht, sondern durchgehend eingebunden wird – vom ersten Interview bis zum finalen Testing. UX ohne echte Nutzer:innen ist für mich nur Deko.",
+      "faqQuestion6": "Was macht UX-Design für dich so besonders?",
+      "faqAnswer6": "X-Design ist für mich mehr als Gestaltung – es ist die Brücke zwischen echten Problemen und möglichen Lösungen. Ich liebe es, wenn ich kreative Ideen mit logischem Denken verbinden kann. UX erlaubt mir, meine Stärken voll auszuspielen: zuhören, analysieren, visualisieren – und am Ende entsteht etwas, das Menschen wirklich hilft. Es ist einfach das perfekte Zusammenspiel aus Kreativität, Struktur und Empathie.",
   
       "contactTitle": "Lass uns sprechen!",
       "contactHeroText": "Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.",
@@ -29,29 +38,44 @@
       "projectsHeader": "Meine Projekte – coming soon",
       "projectsText": "Gutes UX braucht Zeit. Ich arbeite derzeit an drei Herzensprojekten rund um Inklusion, Elternschaft und digitale Bildung. Bald kannst du hier mehr darüber erfahren – mit echten Einblicken in meinen Designprozess.",
   
-
       "privacyLink": "Datenschutz",
-      "imprintLink": "Impressum"
+      "imprintLink": "Impressum" ,
+      "copyrightText": "&copy; 2025 Rika. Alle Rechte vorbehalten.",
+
+      "projectCardTitle": "Projektname",
+      "projectCardText":"Kurze Beschreibung deines Projekts, damit man sofort versteht, worum es geht.",
+      
+      "ctaButton1": "Mehr erfahren",
+      "ctaButton2": "Kontakt"
     },
 
     "en": {
-      "heroTitle": "UX design that connects – aesthetics, structure, and true user-centricity",
-      "heroText": "I combine creative passion with a clear focus on user needs. Together, we'll craft digital products that not only look great but feel right – intuitive, sustainable, and tailored to your goals.",
-      "projectsTitle": "Preview of current project",
-      "projectsComingSoon": "Great UX takes time. I'm currently working on three passion projects around inclusion, parenthood, and digital education.",
+      "heroTitle": "UX design that connects - aesthetics, structure and a real focus on the user",
+      "heroText": "I combine creative passion with a clear focus on user needs. Our collaborative process ensures the delivery of digital products that are not merely aesthetically pleasing, but ergonomically sound. Our solutions are meticulously designed to be intuitive, sustainable, and customised to align with your organisational objectives.",
+      "projectsTitle": "Current project preview",
       "contactCta": "Let's talk!",
       "contactText": "Have an idea, project, or need UX support? Reach out – I'd love to chat for a no-strings-attached consultation.",
   
       "aboutTitle": "About me",
-      "aboutText": "I'm an aspiring UX designer with a knack for user-centered solutions and a sharp eye for detail. My goal: to create digital experiences that are intuitive, meaningful, and simply enjoyable.",
+      "aboutText": "I'm an aspiring UX designer with a knack for user-centered solutions and a sharp eye for detail. My aim is to create digital experiences that are intuitive, meaningful, and simply enjoyable.",
       "faqTitle": "FAQs",
       "faqIntro": "What you should know about UX design and my approach – here are the key answers at a glance.",
-      "faqQuestion1": "What is UX design and why are you passionate about it?",
-      "faqAnswer1": "UX design is about creating digital products that are intuitive to use and deliver real value. What excites me most is how thoughtful design can make life easier. As a career changer, I bring fresh perspectives and an unbiased approach – helping to identify genuine user needs and develop creative solutions.",
+      "faqQuestion1": "What is UX design and why are you so interested in it?",
+      "faqAnswer1": "UX design is about creating digital products that are intuitive to use and deliver real value. What excites me most is how thoughtful design can make life easier. As someone who has changed careers, I bring fresh perspectives and an unbiased approach – helping to identify genuine user needs and develop creative solutions.",
       "faqQuestion2": "Why did you choose to switch careers?",
-      "faqAnswer2": "I chose to pivot into UX design to merge my passion for design and technology with my strategic thinking. My background taught me to analyze complex problems methodically – now I apply that creatively in UX design.",
+      "faqAnswer2": "I chose to pivot into UX design to combine my passion for design and technology with my strategic thinking. My background taught me to analyze complex problems methodically – now I apply that creatively in UX design.",
       "faqQuestion3": "What are your focus areas in UX?",
-      "faqAnswer3": "I'm particularly drawn to where UX meets societal challenges. I love working on inclusive concepts that create real value and address actual human needs – not just buzzwords.",
+      "faqAnswer3": "I'm particularly drawn to where UX meets societal challenges. I love working on inclusive concepts that create true value and address actual human needs.",
+      "faqQuestion4": "What projects have you worked on so far?",
+      "faqAnswer4": "I am currently in the planning phase of three projects that are particularly close to my heart:",
+      "faqProject1": "MamAid - a community platform for mothers, especially first-time mothers or women without strong support. The focus is on exchange, encouragement and a sense of ‘I'm not alone’.",
+      "faqProject2": "IncluCook - a website that makes recipes accessible for people with physical or mental disabilities. From intuitive navigation to easy-to-understand recipe steps: Accessibility is the core concept here.",
+      "faqProject3": "(working title) - an app that helps teachers to integrate digital media competence into the classroom - and at the same time supports elementary school children individually, especially with topics such as concentration or reading skills.",
+      "faqAnswer4End": "Even though none of them are live yet, these projects show what I believe in: design can be socially relevant - and that's where I want to go.",
+      "faqQuestion5": "How do you approach a design process?",
+      "faqAnswer5": "I work in a structured, empathetic and iterative way. I start every project with a notion board - where I collect everything from research to testing. I talk to real users before I draw a single wireframe. This is the only way I can really understand what is needed. This is followed by an agile process of ideation, prototyping and continuous feedback. It's important to me that the target group is not only considered at the beginning, but is involved throughout - from the first interview to the final test. For me, UX without real users is just decoration.",
+      "faqQuestion6": "What is it that makes UX design so special to you?",
+      "faqAnswer6": "For me, UX design is more than just design - it is the bridge between real problems and possible solutions. I love combining creative ideas with logical thinking. UX allows me to play to my strengths: listening, analysing, visualising - and the end result is something that really helps people. It's the perfect combination of creativity, structure and empathy",
     
       "contactTitle": "Let's connect!",
       "contactHeroText": "Whether it's a project idea, quick chat, or first meeting – I'd love to hear from you. Drop me a message, and we'll explore how we can bring your vision to life.",
@@ -65,6 +89,13 @@
       "projectsText": "Great UX takes time. I'm currently working on three passion projects around inclusion, parenthood, and digital education. Stay tuned for behind-the-scenes insights into my design process.",
   
       "privacyLink": "Privacy Policy",
-      "imprintLink": "Imprint"
+      "imprintLink": "Imprint",
+      "copyrightText": "&copy; 2025 Rika. All rights reserved.",
+
+      "projectCardTitle": "project name",
+      "projectCardText":"short description of the project.",
+      
+      "ctaButton1": "learn more",
+      "ctaButton2": "contact"
     }
   }
