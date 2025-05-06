@@ -1,62 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta name="description" content="UX-Design-Portfolio von Rika"/>
-        <meta name="author" content="Rika"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="UX-Design-Portfolio von Rika" />
+    <meta name="author" content="Rika" />
 
-        <title>UX-DESIGN BY RIKA</title>
-        <link rel="stylesheet" href="css/style.css"/>
-        <link rel="icon" href="img/PreLogo.svg" type="image/svg+xml"/>
-        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    </head>
+    <title>UX-DESIGN BY RIKA</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="img/PreLogo.svg" type="image/svg+xml" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
 
-    <body>
-        <header></header>
+  <body>
+    <header></header>
 
-        <main class="content-wrapper">
-            <section class="contact-hero">
-                <h2 data-i18n="contactTitle">Lass uns sprechen!</h2>
-                <p data-i18n="contactHeroText">Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich freue mich, von dir zu hören. Schreib mir einfach und wir finden heraus, ob wir zusammen an deiner Vision arbeiten wollen.</p><br>
-            </section>
-         
-            <form 
-                action="https://formspree.io/f/xvgakvoq"
-                method="POST"
-                id="contact-form">
+    <main class="content-wrapper">
+      <section class="contact-hero">
+        <h2 data-i18n="contactTitle">Lass uns sprechen!</h2>
+        <p data-i18n="contactHeroText">
+          Ob Projektidee, spontaner Austausch oder ein erstes Kennenlernen – ich
+          freue mich, von dir zu hören. Schreib mir einfach und wir finden
+          heraus, ob wir zusammen an deiner Vision arbeiten wollen.
+        </p>
+        <br />
+      </section>
 
-                <!-- Honeypot -->
-                <input type="checkbox" name="_honeypot" style="display:none;" tabindex="-1">
+      <form
+        action="https://formspree.io/f/xvgakvoq"
+        method="POST"
+        id="contact-form"
+      >
+        <!-- Honeypot -->
+        <input
+          type="checkbox"
+          name="_honeypot"
+          style="display: none"
+          tabindex="-1"
+        />
 
-                <!-- Hidden Fields -->
-                <input type="hidden" name="_replyto" value="rikafederov@gmail.com">
+        <!-- Hidden Fields -->
+        <input type="hidden" name="_replyto" value="rikafederov@gmail.com" />
 
-                <label data-i18n="formName" for="name">Name:</label>
-                <input type="text" id="name" name="name" required />
-    
-                <label data-i18n="formEmail" for="email">E-Mail:</label>
-                <input type="email" id="email" name="email" required />
-    
-                <label data-i18n="formMessage" for="message">Nachricht:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+        <label data-i18n="formName" for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
 
-                <!-- reCAPTCHA -->
-                <div class="g-recaptcha" data-sitekey="6LdpDS0rAAAAAAL0fZmqC-CqWXFNrmOEH-2sW4ed"></div>
-    
-                <button class=cta-Button-1 data-i18n="formSubmit" type="submit">Senden</button>
+        <label data-i18n="formEmail" for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required />
 
-                <div data-i18n="formSucces" id="form-success" style="display:none; margin-top:1rem; padding:1rem; background:var(--color-accent); border-radius:var(--border-radius);">
-                ✓ Nachricht gesendet! Ich melde mich bald.
-                </div>
-            </form>
+        <label data-i18n="formMessage" for="message">Nachricht:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-        </main>
+        <!-- reCAPTCHA -->
+        <div
+          class="g-recaptcha"
+          data-sitekey="6LdpDS0rAAAAAAL0fZmqC-CqWXFNrmOEH-2sW4ed"
+        ></div>
 
-        <footer></footer>
+        <button class="cta-Button-1" data-i18n="formSubmit" type="submit">
+          Senden
+        </button>
 
-        <div class="accessibility-container"></div>
-        <script src="js/main.js" defer></script>
-    </body>
+        <div
+          data-i18n="formSucces"
+          id="form-success"
+          style="
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--color-accent);
+            border-radius: var(--border-radius);
+          "
+        >
+          ✓ Nachricht gesendet! Ich melde mich bald.
+        </div>
+      </form>
+    </main>
+
+    <footer></footer>
+
+    <div class="accessibility-container"></div>
+    <script src="js/main.js" defer></script>
+  </body>
 </html>

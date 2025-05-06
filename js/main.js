@@ -5,30 +5,31 @@
  * @param {string} lang - Sprachcode ('de' oder 'en')
  */
 async function loadLanguage(lang) {
-  
   try {
-    const response = await fetch('../translations/lang.json');
-    if (!response.ok) throw new Error('Übersetzungen konnten nicht geladen werden');
+    const response = await fetch("../translations/lang.json");
+    if (!response.ok)
+      throw new Error("Übersetzungen konnten nicht geladen werden");
     const translations = await response.json();
 
-       // Texte ersetzen 
-       document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.dataset.i18n;
-        if (translations[lang]?.[key]) {
-          element.innerHTML = translations[lang][key]; 
-        } else {
-          console.warn(`Fehlende Übersetzung für: ${key}`);
-        }
-      });
+    // Texte ersetzen
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.dataset.i18n;
+      if (translations[lang]?.[key]) {
+        element.innerHTML = translations[lang][key];
+      } else {
+        console.warn(`Fehlende Übersetzung für: ${key}`);
+      }
+    });
 
-    const logo = document.getElementById('header-logo');
+    const logo = document.getElementById("header-logo");
     if (logo) {
-      const isDarkMode = document.body.classList.contains('force-dark');
-      logo.src = isDarkMode ? 'img/RikaLogo_dunkel.svg' : 'img/RikaLogo_hell.svg';
+      const isDarkMode = document.body.classList.contains("force-dark");
+      logo.src = isDarkMode
+        ? "img/RikaLogo_dunkel.svg"
+        : "img/RikaLogo_hell.svg";
     }
-
   } catch (error) {
-    console.error('Fehler beim Laden der Übersetzungen:', error);
+    console.error("Fehler beim Laden der Übersetzungen:", error);
   }
 }
 
@@ -36,20 +37,20 @@ async function loadLanguage(lang) {
  * Initialisiert die Sprachumschaltung
  */
 function initLanguage() {
-  const savedLang = localStorage.getItem('preferredLang') || 'en';
+  const savedLang = localStorage.getItem("preferredLang") || "en";
   document.documentElement.lang = savedLang;
   loadLanguage(savedLang);
 
   // Toggle-Button Event
-  const languageButton = document.getElementById('language-toggle-btn');
+  const languageButton = document.getElementById("language-toggle-btn");
   if (languageButton) {
-    languageButton.textContent = savedLang === 'de' ? 'DE | EN' : 'EN | DE';
-    languageButton.addEventListener('click', () => {
-      const newLang = document.documentElement.lang === 'de' ? 'en' : 'de';
+    languageButton.textContent = savedLang === "de" ? "DE | EN" : "EN | DE";
+    languageButton.addEventListener("click", () => {
+      const newLang = document.documentElement.lang === "de" ? "en" : "de";
       document.documentElement.lang = newLang;
-      localStorage.setItem('preferredLang', newLang);
+      localStorage.setItem("preferredLang", newLang);
       loadLanguage(newLang);
-      languageButton.textContent = newLang === 'de' ? 'DE | EN' : 'EN | DE';
+      languageButton.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
     });
   }
 }
@@ -62,7 +63,8 @@ function initLanguage() {
 async function loadComponent(selector, file) {
   try {
     const response = await fetch(file);
-    if (!response.ok) throw new Error(`HTTP-Fehler! Status: ${response.status}`);
+    if (!response.ok)
+      throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     document.querySelector(selector).innerHTML = await response.text();
     return true;
   } catch (error) {
@@ -78,75 +80,83 @@ function initAccessibility() {
   const selectAll = (selector) => document.querySelectorAll(selector);
 
   const elements = {
-    floaterBtn: select('.floater-btn'),
-    panel: select('.accessibility-panel'),
-    closeBtn: select('.close-panel'),
-    themeBtns: selectAll('[data-theme]'),
-    fontSizeBtns: selectAll('[data-size]'),
-    currentSizeDisplay: select('.current-size')
+    floaterBtn: select(".floater-btn"),
+    panel: select(".accessibility-panel"),
+    closeBtn: select(".close-panel"),
+    themeBtns: selectAll("[data-theme]"),
+    fontSizeBtns: selectAll("[data-size]"),
+    currentSizeDisplay: select(".current-size"),
   };
 
   // Panel-Steuerung
-  elements.floaterBtn?.addEventListener('click', () => {
+  elements.floaterBtn?.addEventListener("click", () => {
     elements.panel.hidden = !elements.panel.hidden;
   });
 
-  elements.closeBtn?.addEventListener('click', () => {
+  elements.closeBtn?.addEventListener("click", () => {
     elements.panel.hidden = true;
   });
 
   // Theme-Switch
-  elements.themeBtns?.forEach(btn => {
-    btn.addEventListener('click', () => {
+  elements.themeBtns?.forEach((btn) => {
+    btn.addEventListener("click", () => {
       const theme = btn.dataset.theme;
-      document.body.classList.remove('force-light', 'force-dark');
-      if (theme !== 'auto') document.body.classList.add(`force-${theme}`);
-      localStorage.setItem('theme', theme === 'auto' ? '' : theme);
-      elements.themeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.body.classList.remove("force-light", "force-dark");
+      if (theme !== "auto") document.body.classList.add(`force-${theme}`);
+      localStorage.setItem("theme", theme === "auto" ? "" : theme);
+      elements.themeBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
       updateIcons();
     });
   });
 
   // Schriftgröße
-  elements.fontSizeBtns?.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentSize = parseInt(document.documentElement.style.getPropertyValue('--font-scale') || 100);
-      const newSize = Math.min(150, Math.max(80, 
-        btn.dataset.size === '+' ? currentSize + 10 : currentSize - 10
-      ));
-      document.documentElement.style.setProperty('--font-scale', `${newSize}%`);
+  elements.fontSizeBtns?.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const currentSize = parseInt(
+        document.documentElement.style.getPropertyValue("--font-scale") || 100
+      );
+      const newSize = Math.min(
+        150,
+        Math.max(
+          80,
+          btn.dataset.size === "+" ? currentSize + 10 : currentSize - 10
+        )
+      );
+      document.documentElement.style.setProperty("--font-scale", `${newSize}%`);
       elements.currentSizeDisplay.textContent = `${newSize}%`;
-      localStorage.setItem('fontScale', newSize);
+      localStorage.setItem("fontScale", newSize);
     });
   });
 
   // Initialisierung
-  const savedTheme = localStorage.getItem('theme');
-  const savedSize = localStorage.getItem('fontScale') || 100;
+  const savedTheme = localStorage.getItem("theme");
+  const savedSize = localStorage.getItem("fontScale") || 100;
   if (savedTheme) {
     const btn = select(`[data-theme="${savedTheme}"]`);
     btn?.click(); // Triggert auch .active + updateIcons
   }
-  document.documentElement.style.setProperty('--font-scale', `${savedSize}%`);
+  document.documentElement.style.setProperty("--font-scale", `${savedSize}%`);
   elements.currentSizeDisplay.textContent = `${savedSize}%`;
 
   new MutationObserver(() => {
-    const logo = document.getElementById('header-logo');
+    const logo = document.getElementById("header-logo");
     if (logo) {
-      const isDarkMode = document.body.classList.contains('force-dark');
-      logo.src = isDarkMode ? 'img/RikaLogo_dunkel.svg' : 'img/RikaLogo_hell.svg';
+      const isDarkMode = document.body.classList.contains("force-dark");
+      logo.src = isDarkMode
+        ? "img/RikaLogo_dunkel.svg"
+        : "img/RikaLogo_hell.svg";
     }
   }).observe(document.body, {
     attributes: true,
-    attributeFilter: ['class']
+    attributeFilter: ["class"],
   });
 }
 
 // Hilfsfunktion für Icons (Dark/Light)
 function updateIcons() {
-  const isDark = document.body.classList.contains('force-dark');
-  document.querySelectorAll('.theme-icon').forEach(icon => {
+  const isDark = document.body.classList.contains("force-dark");
+  document.querySelectorAll(".theme-icon").forEach((icon) => {
     const newSrc = isDark ? icon.dataset.dark : icon.dataset.light;
     if (newSrc && icon.src !== newSrc) icon.src = newSrc;
   });
@@ -155,34 +165,33 @@ function updateIcons() {
 // ==================== KONTAKTFORMULAR ====================
 
 function initContactForm() {
-  const contactForm = document.getElementById('contact-form');
+  const contactForm = document.getElementById("contact-form");
   if (!contactForm) return;
 
-  contactForm.addEventListener('submit', async (e) => {
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
 
     try {
-      if (typeof grecaptcha !== 'undefined' && !grecaptcha.getResponse()) {
-        showNotification("Bitte bestätige, dass du kein Roboter bist", 'error');
+      if (typeof grecaptcha !== "undefined" && !grecaptcha.getResponse()) {
+        showNotification("Bitte bestätige, dass du kein Roboter bist", "error");
         return;
       }
 
       const response = await fetch(contactForm.action, {
-        method: 'POST',
+        method: "POST",
         body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
+        headers: { Accept: "application/json" },
       });
 
       if (!response.ok) throw new Error(await response.text());
-      showNotification("Nachricht gesendet!", 'success');
+      showNotification("Nachricht gesendet!", "success");
       contactForm.reset();
-      if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
-
+      if (typeof grecaptcha !== "undefined") grecaptcha.reset();
     } catch (error) {
       console.error("Formularfehler:", error);
-      showNotification("Fehler beim Senden", 'error');
+      showNotification("Fehler beim Senden", "error");
     } finally {
       submitBtn.disabled = false;
     }
@@ -197,28 +206,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     const [headerLoaded, footerLoaded, widgetLoaded] = await Promise.all([
       loadComponent("header", "components/header.html"),
       loadComponent("footer", "components/footer.html"),
-      loadComponent(".accessibility-container", "components/accessibility-widget.html")
+      loadComponent(
+        ".accessibility-container",
+        "components/accessibility-widget.html"
+      ),
     ]);
 
     // Initialisierungen
-    initLanguage();          // Sprachumschaltung
-    initAccessibility();     // Dark Mode & Barrierefreiheit
-    initContactForm();       // Kontaktformular
+    initLanguage(); // Sprachumschaltung
+    initAccessibility(); // Dark Mode & Barrierefreiheit
+    initContactForm(); // Kontaktformular
 
     // Observer für Theme-Änderungen (Icons aktualisieren)
     new MutationObserver(updateIcons).observe(document.body, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ["class"],
     });
-
   } catch (error) {
     console.error("Initialisierungsfehler:", error);
   }
 });
 
 // Hilfsfunktion für Benachrichtigungen
-function showNotification(message, type = 'info') {
-  const notification = document.createElement('div');
+function showNotification(message, type = "info") {
+  const notification = document.createElement("div");
   notification.className = `notification ${type}`;
   notification.textContent = message;
   document.body.appendChild(notification);

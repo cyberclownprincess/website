@@ -1,38 +1,38 @@
 /* SETUP & LIGHT MODE*/
 :root {
-  --font-heading: 'Abril Fatface', serif;
-  --font-body: 'Inter', sans-serif;
-  
+  --font-heading: "Abril Fatface", serif;
+  --font-body: "Inter", sans-serif;
+
   /* LIGHT MODE*/
   --color-primary: #000000;
-  --color-secondary: #5B6E92;
-  --color-accent: #BAEAFF;
-  --color-accent-dark: #94BBCC;
-  --color-bg: #F1FAFF;
-  --color-header-bg: #F8FCFF;
+  --color-secondary: #5b6e92;
+  --color-accent: #baeaff;
+  --color-accent-dark: #94bbcc;
+  --color-bg: #f1faff;
+  --color-header-bg: #f8fcff;
   --color-border: #000000;
   --color-text: #000000;
-  --link-color: #163064;      
-  --link-visited-color: #5B6E92; 
+  --link-color: #163064;
+  --link-visited-color: #5b6e92;
 }
 
-/* DARK MODE*/ 
+/* DARK MODE*/
 body.force-dark {
-  --color-primary: #FFFFFF;
-  --color-secondary: #D0D5E0;
-  --color-accent: #5B6E92;       
-  --color-accent-dark: #ABBADC;
+  --color-primary: #ffffff;
+  --color-secondary: #d0d5e0;
+  --color-accent: #5b6e92;
+  --color-accent-dark: #abbadc;
   --color-bg: #112650;
   --color-header-bg: #163064;
-  --color-border: #FFFFFF;
-  --color-text: #FFFFFF;
-  --link-color: #F1FAFF;   
-  --link-visited-color: #BAEAFF;
+  --color-border: #ffffff;
+  --color-text: #ffffff;
+  --link-color: #f1faff;
+  --link-visited-color: #baeaff;
 }
 
 body.force-dark input,
 body.force-dark textarea {
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
   border-color: var(--color-border) !important;
   color: var(--color-bg) !important;
 }
@@ -52,14 +52,31 @@ html {
   font-size: calc(1rem * var(--font-scale, 100) / 100);
 }
 
-h1 { font-size: 3.5rem;}
-h2 { font-size: 3rem;}
-h3 { font-size: 2.5rem;}
-h4 { font-size: 2rem;}
-h5 { font-size: 1.5rem;}
-h6 { font-size: 1.25rem;}
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2.5rem;
+}
+h4 {
+  font-size: 2rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+h6 {
+  font-size: 1.25rem;
+}
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   margin-bottom: 0.5rem;
 }
@@ -82,13 +99,13 @@ body {
 
 main {
   flex: 1;
-  padding: 0 10px; 
+  padding: 0 10px;
 }
 
 .content-wrapper {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 2rem 10px; 
+  padding: 2rem 10px;
   width: 100%;
 }
 
@@ -113,9 +130,8 @@ header {
   position: relative;
   top: 5px;
   width: 70px;
-  height: auto;          
+  height: auto;
 }
-
 
 nav {
   display: flex;
@@ -129,7 +145,8 @@ nav {
   border-bottom: 2px solid var(--color-primary);
 }
 
-.nav-left, .nav-right {
+.nav-left,
+.nav-right {
   display: flex;
   align-items: center;
 }
@@ -263,7 +280,7 @@ body.force-dark .toggle-group button.active {
   border-radius: 50%;
   background: var(--color-accent);
   border: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -284,7 +301,7 @@ body.force-dark .toggle-group button.active {
   border: 1px solid var(--color-primary);
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-size: var(--font-scale, 100%);
 }
 
@@ -351,7 +368,7 @@ body.force-dark .toggle-group button.active {
 }
 
 .toggle-group button.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -3px;
   left: 50%;
@@ -429,7 +446,7 @@ body.force-dark .toggle-group button.active {
 [data-theme] {
   background-color: transparent;
   color: inherit;
-  border: 1px solid var(--color-accent, #BAEAFF);
+  border: 1px solid var(--color-accent, #baeaff);
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
   cursor: pointer;
@@ -439,8 +456,8 @@ body.force-dark .toggle-group button.active {
 
 /* Aktiver Button */
 [data-theme].active {
-  background-color: var(--color-accent, #BAEAFF);
-  color: #090C0D; /* oder #fff bei dunklem Hintergrund */
+  background-color: var(--color-accent, #baeaff);
+  color: #090c0d; /* oder #fff bei dunklem Hintergrund */
   font-weight: bold;
 }
 
@@ -496,10 +513,11 @@ body.force-dark .toggle-group button.active {
   align-items: center;
 }
 
-.cta-button-1, .cta-button-2 {
-  min-width: 140px; 
+.cta-button-1,
+.cta-button-2 {
+  min-width: 140px;
   text-align: center;
-  padding: 0.75rem 1.5rem !important; 
+  padding: 0.75rem 1.5rem !important;
   box-sizing: border-box;
   white-space: nowrap;
   display: inline-flex;
@@ -581,14 +599,15 @@ label {
   margin-bottom: 0.5rem;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 1rem;
   margin-bottom: 1.5rem;
   border: 1px solid var(--color-primary);
   border-radius: 5px;
   font-family: inherit;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 1rem;
 }
 
@@ -602,7 +621,7 @@ button[type="submit"] {
   color: var(--color-primary);
   border: 1px solid var(--color-accent);
   padding: 0.75rem 2rem;
-  font-size:medium;
+  font-size: medium;
   font-weight: 600;
   border-radius: 30px;
   cursor: pointer;
@@ -625,14 +644,16 @@ button[type="submit"]:disabled::after {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255,255,255,0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top-color: white;
   animation: spin 1s ease-in-out infinite;
 }
 
 @keyframes spin {
-  to { transform: translateY(-50%) rotate(360deg); }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }
 
 .g-recaptcha {
@@ -652,7 +673,7 @@ button[type="submit"]:disabled::after {
 
 .faq-item {
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #DADADA;
+  border-bottom: 1px solid #dadada;
   padding-bottom: 1rem;
 }
 
@@ -677,7 +698,7 @@ button[type="submit"]:disabled::after {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
@@ -745,20 +766,20 @@ button[type="submit"]:disabled::after {
     gap: 2rem;
     padding-top: 4rem;
   }
-  
+
   .hero-content {
     align-items: center;
   }
-  
+
   .hero p {
     text-align: center;
   }
-  
+
   .contact-section {
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .contact-hero {
     text-align: center;
   }
@@ -768,52 +789,60 @@ button[type="submit"]:disabled::after {
   :root {
     --header-height: 70px;
   }
-  
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.75rem; }
-  
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+
   nav ul {
     gap: 1rem;
   }
-  
+
   .nav-right {
     gap: 1rem;
   }
-  
+
   .hero img {
     width: 100%;
     max-width: 280px;
   }
-  
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
-  
+
   .footer-nav ul {
     justify-content: center;
   }
 
   form {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
 
-  input, textarea {
-    padding: 1.2rem; 
+  input,
+  textarea {
+    padding: 1.2rem;
   }
 
   .contact-hero {
     grid-template-columns: 1fr;
   }
-  
+
   .contact-hero > *:first-child {
     padding-right: 0;
   }
 
-  .cta-button-1, .cta-button-2 {
-    min-width: 120px; 
+  .cta-button-1,
+  .cta-button-2 {
+    min-width: 120px;
     padding: 0.6rem 1rem !important;
   }
 }
@@ -823,29 +852,33 @@ button[type="submit"]:disabled::after {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .button {
     width: 100%;
     text-align: center;
   }
-  
+
   form {
     padding: 1.5rem;
   }
 
   .accessibility-panel {
-    width: 280px; 
+    width: 280px;
     right: -20px;
   }
 
   .floater-btn {
-    bottom: 60px; 
+    bottom: 60px;
   }
 
   .hero img {
     max-width: 220px;
   }
-  
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.8rem; }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
 }
