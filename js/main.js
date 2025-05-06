@@ -212,16 +212,54 @@ document.addEventListener("DOMContentLoaded", async () => {
       ),
     ]);
 
-    const currentPage = window.location.pathname.split("/").pop() || "home.html";
-    document.querySelectorAll('.nav-link').forEach(link => {
-      const linkPage = link.getAttribute('href').split("/").pop();
-      link.classList.toggle('active', linkPage === currentPage);
+    const currentPage =
+      window.location.pathname.split("/").pop() || "home.html";
+    document.querySelectorAll(".nav-link").forEach((link) => {
+      const linkPage = link.getAttribute("href").split("/").pop();
+      link.classList.toggle("active", linkPage === currentPage);
     });
 
     // Initialisierungen
     initLanguage(); // Sprachumschaltung
     initAccessibility(); // Dark Mode & Barrierefreiheit
     initContactForm(); // Kontaktformular
+
+    // Sidebar- und Hamburger-Menü-Logik
+    document.addEventListener("DOMContentLoaded", () => {
+      const hamburger = document.querySelector(".hamburger");
+      const sidebar = document.querySelector(".sidebar");
+      const overlay = document.createElement("div");
+      overlay.classList.add("overlay");
+      document.body.appendChild(overlay);
+
+      hamburger.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+        hamburger.classList.toggle("active");
+      });
+
+      // Overlay schließt Sidebar bei Klick
+      overlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+
+      // Sprachumschaltung in der Sidebar
+      const mobileLanguageBtn = document.getElementById(
+        "mobile-language-toggle-btn"
+      );
+      if (mobileLanguageBtn) {
+        mobileLanguageBtn.addEventListener("click", () => {
+          const currentLang = document.documentElement.lang;
+          const newLang = currentLang === "de" ? "en" : "de";
+          document.documentElement.lang = newLang;
+          loadLanguage(newLang);
+          mobileLanguageBtn.textContent =
+            newLang === "de" ? "DE | EN" : "EN | DE";
+        });
+      }
+    });
 
     // Observer für Theme-Änderungen (Icons aktualisieren)
     new MutationObserver(updateIcons).observe(document.body, {

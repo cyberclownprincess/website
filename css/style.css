@@ -173,6 +173,77 @@ nav a:hover {
   color: var(--color-secondary);
 }
 
+.hamburger {
+  display: none; /* Standardmäßig versteckt */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Sidebar zunächst versteckt */
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--color-header-bg);
+  border-left: 1px solid var(--color-primary);
+  z-index: 999;
+  transition: right 0.3s ease;
+  padding: 20px;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  right: 0; 
+}
+
+.mobile-nav {
+  list-style: none;
+  margin-top: 60px;
+}
+
+.mobile-nav li {
+  margin-bottom: 20px;
+}
+
+.sidebar-language-toggle {
+  margin-top: auto; 
+  padding-bottom: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* LANGUAGE */
 
 .language-toggle {
@@ -749,4 +820,22 @@ button[type="submit"]:disabled::after {
 .imprint-content a:hover {
   color: var(--color-primary);
   text-decoration: underline;
+}
+
+/* MEDIA QUERY*/
+@media (max-width: 768px) {
+  /* Desktop-Navigation ausblenden */
+  .nav-right {
+    display: none;
+  }
+
+  /* Hamburger-Menü anzeigen */
+  .hamburger {
+    display: block;
+  }
+
+  /* Sidebar-Inhalte zentrieren (optional) */
+  .mobile-nav {
+    text-align: center;
+  }
 }

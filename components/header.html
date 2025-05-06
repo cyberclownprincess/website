@@ -5,8 +5,17 @@
         <img src="/img/RikaLogo_hell.svg" alt="Rika Logo" id="header-logo" />
       </a>
     </div>
+
+    <!-- Hamburger-Icon (nur auf Mobilgeräten sichtbar) -->
+    <button class="hamburger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Desktop-Navigation (nicht auf Mobilgeräten sichtbar) -->
     <div class="nav-right">
-      <ul>
+      <ul class="desktop-nav">
         <li>
           <a href="about.html" class="nav-link" data-i18n="aboutNavLink"
             >Über mich</a
@@ -25,6 +34,32 @@
       </ul>
       <div class="language-toggle">
         <button id="language-toggle-btn" aria-label="Sprache ändern">
+          DE | EN
+        </button>
+      </div>
+    </div>
+
+    <!-- Sidebar (Overlay-Navigation für Mobilgeräte) -->
+    <div class="sidebar">
+      <ul class="mobile-nav">
+        <li>
+          <a href="about.html" class="nav-link" data-i18n="aboutNavLink"
+            >Über mich</a
+          >
+        </li>
+        <li>
+          <a href="projects.html" class="nav-link" data-i18n="projectsNavLink"
+            >Projekte</a
+          >
+        </li>
+        <li>
+          <a href="contact.html" class="nav-link" data-i18n="contactNavLink"
+            >Kontakt</a
+          >
+        </li>
+      </ul>
+      <div class="sidebar-language-toggle">
+        <button id="mobile-language-toggle-btn" aria-label="Sprache ändern">
           DE | EN
         </button>
       </div>
