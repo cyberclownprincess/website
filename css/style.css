@@ -96,7 +96,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-size: var(--font-scale, 100%);
 }
 
 main {
