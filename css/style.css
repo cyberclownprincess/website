@@ -128,6 +128,54 @@ header {
   height: var(--header-height);
 }
 
+#header-logo {
+  position: relative;
+  top: 5px;
+  width: 70px;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  gap: 2rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  transition: color var(--transition);
+}
+
+nav a:hover {
+  color: var(--color-secondary);
+}
+
 /* SIDEBAR */
 .sidebar {
   position: fixed;
