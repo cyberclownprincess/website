@@ -202,66 +202,57 @@ function initContactForm() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // Komponenten laden
+    // 1. Komponenten laden
     const [headerLoaded, footerLoaded, widgetLoaded] = await Promise.all([
       loadComponent("header", "components/header.html"),
       loadComponent("footer", "components/footer.html"),
-      loadComponent(
-        ".accessibility-container",
-        "components/accessibility-widget.html"
-      ),
+      loadComponent(".accessibility-container", "components/accessibility-widget.html"),
     ]);
 
-    const currentPage =
-      window.location.pathname.split("/").pop() || "home.html";
+    // 2. Aktive Navigation setzen
+    const currentPage = window.location.pathname.split("/").pop() || "home.html";
     document.querySelectorAll(".nav-link").forEach((link) => {
       const linkPage = link.getAttribute("href").split("/").pop();
       link.classList.toggle("active", linkPage === currentPage);
     });
 
-    // Initialisierungen
-    initLanguage(); // Sprachumschaltung
-    initAccessibility(); // Dark Mode & Barrierefreiheit
-    initContactForm(); // Kontaktformular
+    // 3. Sidebar- und Hamburger-Menü-Logik
+    const hamburger = document.querySelector(".hamburger");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
 
-    // Sidebar- und Hamburger-Menü-Logik
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.querySelector(".hamburger");
-      const sidebar = document.querySelector(".sidebar");
-      const overlay = document.createElement("div");
-      overlay.classList.add("overlay");
-      document.body.appendChild(overlay);
-
-      hamburger.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("active");
-        hamburger.classList.toggle("active");
-      });
-
-      // Overlay schließt Sidebar bei Klick
-      overlay.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-        overlay.classList.remove("active");
-        hamburger.classList.remove("active");
-      });
-
-      // Sprachumschaltung in der Sidebar
-      const mobileLanguageBtn = document.getElementById(
-        "mobile-language-toggle-btn"
-      );
-      if (mobileLanguageBtn) {
-        mobileLanguageBtn.addEventListener("click", () => {
-          const currentLang = document.documentElement.lang;
-          const newLang = currentLang === "de" ? "en" : "de";
-          document.documentElement.lang = newLang;
-          loadLanguage(newLang);
-          mobileLanguageBtn.textContent =
-            newLang === "de" ? "DE | EN" : "EN | DE";
-        });
-      }
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      overlay.classList.toggle("active");
+      hamburger.classList.toggle("active");
     });
 
-    // Observer für Theme-Änderungen (Icons aktualisieren)
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("active");
+      hamburger.classList.remove("active");
+    });
+
+    // 4. Sprachumschaltung in der Sidebar
+    const mobileLanguageBtn = document.getElementById("mobile-language-toggle-btn");
+    if (mobileLanguageBtn) {
+      mobileLanguageBtn.addEventListener("click", () => {
+        const currentLang = document.documentElement.lang;
+        const newLang = currentLang === "de" ? "en" : "de";
+        document.documentElement.lang = newLang;
+        loadLanguage(newLang);
+        mobileLanguageBtn.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
+      });
+    }
+
+    // 5. Initialisierungen
+    initLanguage();
+    initAccessibility();
+    initContactForm();
+
+    // 6. Observer für Theme-Änderungen
     new MutationObserver(updateIcons).observe(document.body, {
       attributes: true,
       attributeFilter: ["class"],
