@@ -212,6 +212,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       ),
     ]);
 
+    const currentPage = window.location.pathname.split("/").pop() || "home.html";
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const linkPage = link.getAttribute('href').split("/").pop();
+      link.classList.toggle('active', linkPage === currentPage);
+    });
+
     // Initialisierungen
     initLanguage(); // Sprachumschaltung
     initAccessibility(); // Dark Mode & Barrierefreiheit
