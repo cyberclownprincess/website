@@ -206,11 +206,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const [headerLoaded, footerLoaded, widgetLoaded] = await Promise.all([
       loadComponent("header", "components/header.html"),
       loadComponent("footer", "components/footer.html"),
-      loadComponent(".accessibility-container", "components/accessibility-widget.html"),
+      loadComponent(
+        ".accessibility-container",
+        "components/accessibility-widget.html"
+      ),
     ]);
 
     // 2. Aktive Navigation setzen
-    const currentPage = window.location.pathname.split("/").pop() || "home.html";
+    const currentPage =
+      window.location.pathname.split("/").pop() || "home.html";
     document.querySelectorAll(".nav-link").forEach((link) => {
       const linkPage = link.getAttribute("href").split("/").pop();
       link.classList.toggle("active", linkPage === currentPage);
@@ -224,34 +228,44 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.body.appendChild(overlay);
 
     hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      overlay.classList.toggle("active");
-      hamburger.classList.toggle("active");
+      const isOpen = sidebar.classList.toggle("open");
+      overlay.classList.toggle("active"); // Diese Zeile fehlt
+      hamburger.setAttribute("aria-expanded", isOpen);
     });
 
-    overlay.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("active");
-      hamburger.classList.remove("active");
-    });
-
-    document.querySelectorAll(".mobile-nav a").forEach(link => {
-      link.addEventListener("click", () => {
+    document.querySelector(".sidebar").addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.target.closest(".mobile-nav a")) {
         sidebar.classList.remove("open");
         overlay.classList.remove("active");
         hamburger.classList.remove("active");
-      });
+      }
+    });
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 768) {
+          sidebar.classList.remove("open");
+          overlay.classList.remove("active");
+          hamburger.classList.remove("active");
+        }
+      }, 250);
     });
 
     // 4. Sprachumschaltung in der Sidebar
-    const mobileLanguageBtn = document.getElementById("mobile-language-toggle-btn");
+    const mobileLanguageBtn = document.getElementById(
+      "mobile-language-toggle-btn"
+    );
     if (mobileLanguageBtn) {
       mobileLanguageBtn.addEventListener("click", () => {
         const currentLang = document.documentElement.lang;
         const newLang = currentLang === "de" ? "en" : "de";
         document.documentElement.lang = newLang;
         loadLanguage(newLang);
-        mobileLanguageBtn.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
+        mobileLanguageBtn.textContent =
+          newLang === "de" ? "DE | EN" : "EN | DE";
       });
     }
 
