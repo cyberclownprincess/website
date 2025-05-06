@@ -235,6 +235,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       hamburger.classList.remove("active");
     });
 
+    document.querySelectorAll(".mobile-nav a").forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        hamburger.classList.remove("active");
+      });
+    });
+
     // 4. Sprachumschaltung in der Sidebar
     const mobileLanguageBtn = document.getElementById("mobile-language-toggle-btn");
     if (mobileLanguageBtn) {
