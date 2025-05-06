@@ -128,120 +128,37 @@ header {
   height: var(--header-height);
 }
 
-#header-logo {
-  position: relative;
-  top: 5px;
-  width: 70px;
-  height: auto;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.nav-link.active {
-  border-bottom: 2px solid var(--color-primary);
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-.nav-right {
-  gap: 2rem;
-}
-
-nav ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--color-primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 1.125rem;
-  transition: color var(--transition);
-}
-
-nav a:hover {
-  color: var(--color-secondary);
-}
-
-.hamburger {
-  display: none; /* Standardmäßig versteckt */
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1000;
-}
-
-.hamburger span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: var(--color-primary);
-  margin: 5px 0;
-  transition: all 0.3s ease;
-}
-
+/* SIDEBAR */
 .sidebar {
   position: fixed;
   top: 0;
-  right: -100%; /* Sidebar zunächst versteckt */
+  right: 0;
   width: 80%;
   max-width: 300px;
   height: 100vh;
   background: var(--color-header-bg);
   border-left: 1px solid var(--color-primary);
-  z-index: 999;
-  transition: right 0.3s ease;
+  z-index: 200;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 20px;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @supports (backdrop-filter: blur(5px)) {
   .sidebar {
     backdrop-filter: blur(5px);
-    background-color: rgba(var(--color-header-bg), 0.9);
+    background-color: color-mix(in srgb, var(--color-header-bg) 90%, transparent);
   }
 }
 
 .sidebar.open {
-  right: 0; 
   transform: translateX(0);
 }
 
-.sidebar-language-toggle {
-  margin-top: auto; 
-  padding-bottom: 20px;
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  font-size: 1rem;
-  border-radius: 20px;
-  transition: all var(--transition);
-}
-
-.sidebar-language-toggle:hover {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-}
-
+/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
@@ -249,31 +166,28 @@ nav a:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 998; 
+  z-index: 150;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s linear;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .overlay.active {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto; 
+  pointer-events: auto;
 }
 
+/* MOBILE NAVIGATION */
 .mobile-nav {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 1.5rem;
   list-style: none;
   margin-top: 2rem;
   padding: 0;
   width: 100%;
-}
-
-.mobile-nav li {
-  margin-bottom: 20px;
 }
 
 .mobile-nav a {
