@@ -229,13 +229,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     hamburger.addEventListener("click", () => {
       const isOpen = sidebar.classList.toggle("open");
-      overlay.classList.toggle("active"); // Diese Zeile fehlt
+      overlay.classList.toggle("active");
       hamburger.setAttribute("aria-expanded", isOpen);
     });
 
     document.querySelector(".sidebar").addEventListener("click", (e) => {
-      e.preventDefault();
-      if (e.target.closest(".mobile-nav a")) {
+      const link = e.target.closest(".mobile-nav a");
+      if (link) {
+        // Sidebar schließen
         sidebar.classList.remove("open");
         overlay.classList.remove("active");
         hamburger.classList.remove("active");

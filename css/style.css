@@ -176,6 +176,25 @@ nav a:hover {
   color: var(--color-secondary);
 }
 
+/* HAMBURGER */
+.hamburger {
+  display: none; /* Standardmäßig versteckt */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
 /* SIDEBAR */
 .sidebar {
   position: fixed;
@@ -257,19 +276,22 @@ nav a:hover {
   display: flex;
 }
 
-#language-toggle-btn {
+.language-toggle button,
+.sidebar-language-toggle button {
   padding: 0.5rem 1rem;
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
+  font-weight: 600;
   font-size: 1rem;
+  border: 2px solid var(--color-primary);
   border-radius: 20px;
+  background-color: transparent;
+  color: var(--color-primary);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#language-toggle-btn:hover {
-  background-color: var(--color-primary);
+.language-toggle button:hover,
+.sidebar-language-toggle button:hover {
+  background-color: var(--color-accent);
   color: var(--color-bg);
 }
 
