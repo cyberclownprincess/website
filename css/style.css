@@ -26,8 +26,8 @@ body.force-dark {
   --color-secondary: #d0d5e0;
   --color-accent: #5b6e92;
   --color-accent-dark: #abbadc;
-  --color-bg: #112650;
-  --color-header-bg: #163064;
+  --color-bg: #09142a;
+  --color-header-bg: #11244a;
   --color-border: #ffffff;
   --color-text: #ffffff;
   --link-color: #f1faff;
@@ -106,7 +106,7 @@ main {
 .content-wrapper {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 2rem 3rem;
+  padding: 2rem 1rem;
   width: 100%;
   font-size: var(--font-scale, 100%);
 }
@@ -276,6 +276,10 @@ nav a:hover {
   display: flex;
 }
 
+sidebar-language-toggle button {
+  margin-top: 2rem;
+}
+
 .language-toggle button,
 .sidebar-language-toggle button {
   padding: 0.5rem 1rem;
@@ -291,7 +295,7 @@ nav a:hover {
 
 .language-toggle button:hover,
 .sidebar-language-toggle button:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
   color: var(--color-bg);
 }
 
@@ -897,6 +901,10 @@ button[type="submit"]:disabled::after {
     --header-height: 70px; 
   }
 
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+
   .nav-right {
     display: none; 
   }
@@ -937,6 +945,11 @@ button[type="submit"]:disabled::after {
 
   input, textarea {
     padding: 0.8rem;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
   }
 
   .button-group {
@@ -986,6 +999,11 @@ button[type="submit"]:disabled::after {
 
   .hero p {
     font-size: 1rem;
+  }
+  
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
   }
 
   .footer-content {
