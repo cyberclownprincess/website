@@ -28,6 +28,7 @@ async function loadLanguage(lang) {
         ? "img/RikaLogo_dunkel.svg"
         : "img/RikaLogo_hell.svg";
     }
+    manageFocusAfterLoad();
   } catch (error) {
     console.error("Fehler beim Laden der Übersetzungen:", error);
   }
@@ -52,6 +53,17 @@ function initLanguage() {
       loadLanguage(newLang);
       languageButton.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
     });
+    
+    languageButton.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const newLang = document.documentElement.lang === "de" ? "en" : "de";
+        document.documentElement.lang = newLang;
+        localStorage.setItem("preferredLang", newLang);
+        loadLanguage(newLang);
+        languageButton.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
+      }
+    });
   }
 }
 
@@ -66,6 +78,9 @@ async function loadComponent(selector, file) {
     if (!response.ok)
       throw new Error(`HTTP-Fehler! Status: ${response.status}`);
     document.querySelector(selector).innerHTML = await response.text();
+    if (selector === "header") {
+      manageFocusAfterLoad();
+    }
     return true;
   } catch (error) {
     console.error(`Fehler beim Laden von ${file}:`, error);
@@ -93,8 +108,25 @@ function initAccessibility() {
     elements.panel.hidden = !elements.panel.hidden;
   });
 
+  elements.floaterBtn?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      elements.panel.hidden = !elements.panel.hidden;
+      if (!elements.panel.hidden) {
+        setTimeout(() => elements.closeBtn.focus(), 100);
+      }
+    }
+  });
+
   elements.closeBtn?.addEventListener("click", () => {
     elements.panel.hidden = true;
+  });
+
+  elements.closeBtn?.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      elements.panel.hidden = true;
+      elements.floaterBtn.focus();
+    }
   });
 
   // Theme-Switch
@@ -107,6 +139,13 @@ function initAccessibility() {
       elements.themeBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       updateIcons();
+    });
+
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
     });
   });
 
@@ -196,9 +235,24 @@ function initContactForm() {
       submitBtn.disabled = false;
     }
   });
+
+  contactForm.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      submitBtn.focus();
+    }
+  });
 }
 
 // ==================== HAUPTPROGRAMM ====================
+
+function manageFocusAfterLoad() {
+  const mainContent = document.querySelector("main");
+  if (mainContent) {
+    mainContent.setAttribute("tabindex", "-1");
+    mainContent.focus();
+  }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -234,10 +288,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       hamburger.setAttribute("aria-expanded", isOpen);
     });
 
+    hamburger.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        const isOpen = sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+        hamburger.setAttribute("aria-expanded", isOpen);
+      }
+    });
+
+    sidebar.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+        hamburger.focus();
+      }
+    });
+
+    sidebar.addEventListener("transitionend", () => {
+      if (sidebar.classList.contains("open")) {
+        const firstLink = sidebar.querySelector(".mobile-nav a");
+        firstLink?.focus();
+      }
+    });
+
     document.querySelector(".sidebar").addEventListener("click", (e) => {
       const link = e.target.closest(".mobile-nav a");
       if (link) {
-        // Sidebar schließen
         sidebar.classList.remove("open");
         overlay.classList.remove("active");
         hamburger.classList.remove("active");
@@ -266,8 +343,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         const newLang = currentLang === "de" ? "en" : "de";
         document.documentElement.lang = newLang;
         loadLanguage(newLang);
-        mobileLanguageBtn.textContent =
-          newLang === "de" ? "DE | EN" : "EN | DE";
+        mobileLanguageBtn.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
+      });
+      
+      mobileLanguageBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const currentLang = document.documentElement.lang;
+          const newLang = currentLang === "de" ? "en" : "de";
+          document.documentElement.lang = newLang;
+          loadLanguage(newLang);
+          mobileLanguageBtn.textContent = newLang === "de" ? "DE | EN" : "EN | DE";
+        }
       });
     }
 
@@ -283,6 +370,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   } catch (error) {
     console.error("Initialisierungsfehler:", error);
+  }
+});
+
+// Globale Tastatursteuerung
+document.addEventListener("keydown", (e) => {
+  // Skip-to-content Link (falls vorhanden)
+  if (e.key === "Tab" && e.shiftKey) {
+    const skipLink = document.querySelector(".skip-link");
+    if (skipLink) {
+      skipLink.focus();
+    }
+  }
+  
+  // Schließen von Modals/Overlays mit Escape
+  if (e.key === "Escape") {
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.querySelector(".overlay");
+    const hamburger = document.querySelector(".hamburger");
+    
+    if (sidebar?.classList.contains("open")) {
+      sidebar.classList.remove("open");
+      overlay?.classList.remove("active");
+      hamburger?.focus();
+    }
   }
 });
 
