@@ -9,6 +9,7 @@
 
     "ctaButton1": "Mehr erfahren",
     "ctaButton2": "Kontakt",
+    "ctaButton3": "Startseite",
 
     "privacyLink": "Datenschutz",
     "imprintLink": "Impressum",
@@ -78,7 +79,10 @@
     "privacyAspect2": "eine Berichtigung oder Löschung Ihrer Daten zu verlangen,",
     "privacyAspect3": "die Verarbeitung Ihrer Daten einzuschränken oder der Verarbeitung zu widersprechen,",
     "privacyAspect4": "sich bei einer Aufsichtsbehörde zu beschweren, wenn Sie der Meinung sind, dass die Verarbeitung Ihrer personenbezogenen Daten nicht rechtmäßig erfolgt.",
-    "privacyContent5End": "Bei Fragen rund um das Thema Datenschutz können Sie sich jederzeit direkt an mich wenden: <a href=mailto:'rikafederov@gmail.com' target='_blank' rel='noopener noreferrer'>rikafederov@gmail.com</a>"
+    "privacyContent5End": "Bei Fragen rund um das Thema Datenschutz können Sie sich jederzeit direkt an mich wenden: <a href=mailto:'rikafederov@gmail.com' target='_blank' rel='noopener noreferrer'>rikafederov@gmail.com</a>",
+
+    "errorTitle":"Oops, lost in space!",
+    "errorText":"Hier gibt’s nichts zu sehen – aber keine Sorge, du bist nur einen Klick von der Startseite entfernt."
   },
 
   "en": {
@@ -91,6 +95,7 @@
 
     "ctaButton1": "learn more",
     "ctaButton2": "contact",
+    "ctaButton3": "homepage",
 
     "privacyLink": "Privacy Policy",
     "imprintLink": "Imprint",
@@ -160,6 +165,9 @@
     "privacyAspect2": "to request a correction or deletion of your data,,",
     "privacyAspect3": "to restrict the processing of your data or to object to the processing,",
     "privacyAspect4": "to file a complaint with a supervisory authority if you are of the opinion that the processing of your personal data is not lawful.",
-    "privacyContent5End": "If you have any questions about data protection, you can contact me directly at any time: <a href=mailto:'rikafederov@gmail.com' target='_blank' rel='noopener noreferrer'>rikafederov@gmail.com</a>"
+    "privacyContent5End": "If you have any questions about data protection, you can contact me directly at any time: <a href=mailto:'rikafederov@gmail.com' target='_blank' rel='noopener noreferrer'>rikafederov@gmail.com</a>",
+
+    "errorTitle":"Whoops, lost in space!",
+    "errorText":"There's nothing to see here. But don't worry, you're just a click away from the homepage."
   }
 }
