@@ -210,6 +210,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ".accessibility-container",
         "components/accessibility-widget.html"
       ),
+      loadComponent(".socials-container", "components/socials.html")
     ]);
 
     // 2. Aktive Navigation setzen
