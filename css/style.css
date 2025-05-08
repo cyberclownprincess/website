@@ -830,8 +830,6 @@ button[type="submit"]:disabled::after {
   border-color: var(--color-accent-dark);
 }
 
-
-
 /* PRIVACY */
 .privacy-content ul {
   padding-left: 2rem;
@@ -883,6 +881,7 @@ button[type="submit"]:disabled::after {
 .error-page p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
+  align-content: center;
 }
 
 .error-page a.cta-button-1 {
