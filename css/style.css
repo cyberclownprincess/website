@@ -225,27 +225,6 @@ nav a:hover {
   transform: translateX(0);
 }
 
-/* OVERLAY 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 150;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s linear;
-  pointer-events: none;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}*/
-
 /* MOBILE NAVIGATION */
 .mobile-nav {
   display: flex;
@@ -259,12 +238,11 @@ nav a:hover {
 
 .mobile-nav a {
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem;
   text-decoration: none;
   color: var(--color-primary);
   font-weight: 600;
   transition: all var(--transition);
-  border-radius: 4px;
 }
 
 .mobile-nav a:hover {
@@ -276,14 +254,22 @@ nav a:hover {
   display: flex;
 }
 
-sidebar-language-toggle button {
-  margin-top: 2rem;
-}
-
-.language-toggle button,
 .sidebar-language-toggle button {
+  margin: 2rem 0;
   padding: 0.5rem 1rem;
-  font-weight: 600;
+  font-weight: 300;
+  font-size: 1rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 20px;
+  background-color: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+} 
+
+.language-toggle button {
+  padding: 0.5rem 1rem;
+  font-weight: 300;
   font-size: 1rem;
   border: 2px solid var(--color-primary);
   border-radius: 20px;
@@ -390,7 +376,7 @@ body.force-dark .toggle-group button.active {
 }
 
 .accessibility-panel {
-  position: absolute;
+  position: relative;
   bottom: 70px;
   right: 0;
   width: 300px;
@@ -452,6 +438,7 @@ body.force-dark .toggle-group button.active {
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
+  position: relative;
 }
 
 .toggle-group button:hover {
@@ -462,17 +449,6 @@ body.force-dark .toggle-group button.active {
   background: var(--color-accent) !important;
   color: var(--color-primary) !important;
   border-color: var(--color-accent) !important;
-}
-
-.toggle-group button.active::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background: var(--color-primary);
 }
 
 .font-size-controls {
@@ -784,11 +760,11 @@ button[type="submit"]:disabled::after {
 
 /* PROJECT CARD */
 .project-card {
+  width: 100%; 
   border: 1px solid var(--color-primary);
-  border-radius: 10px;
+  border-radius: 10px; 
   overflow: hidden;
-  transition: all 0.3s ease;
-  position: relative;
+  background: var(--color-header-bg);
 }
 
 .project-card:hover {
@@ -797,18 +773,41 @@ button[type="submit"]:disabled::after {
 }
 
 .project-image {
-  width: 100%;
-  height: 200px;
   object-fit: cover;
-}
-
-.project-content {
-  padding: 1.5rem;
+  width: 100%;
 }
 
 .project-title {
-  margin-bottom: 0.5rem;
+  padding: 0 0 0 1rem;
 }
+
+.project-description {
+  padding: 0 0 1rem 1rem;
+}
+
+.project-link {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  display: inline-block;
+  padding: 0.75rem 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all var(--transition);
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid var(--color-accent);
+  width: auto;
+  margin: 0.5rem;
+}
+
+.project-link:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+
 
 /* PRIVACY */
 .privacy-content ul {
@@ -958,7 +957,7 @@ button[type="submit"]:disabled::after {
   }
 
   .cta-button-1, .cta-button-2 {
-    width: 100%;
+    width: 20px;
     padding: 0.75rem !important;
   }
 
