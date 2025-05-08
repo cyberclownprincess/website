@@ -17,7 +17,7 @@
 
   --transition: 0.3s ease-in-out;
   --content-width: 1200px;
-  --font-scale: 1
+  --font-scale: 1;
 }
 
 /* DARK MODE*/
@@ -87,7 +87,6 @@ h4 {
 h5 {
   font-size: 1.5rem;
 }
-
 
 h1,
 h2,
@@ -233,7 +232,11 @@ nav a:hover {
 @supports (backdrop-filter: blur(5px)) {
   .sidebar {
     backdrop-filter: blur(5px);
-    background-color: color-mix(in srgb, var(--color-header-bg) 90%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--color-header-bg) 90%,
+      transparent
+    );
   }
 }
 
@@ -281,7 +284,7 @@ nav a:hover {
   color: var(--color-primary);
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-} 
+}
 
 .language-toggle button {
   padding: 0.5rem 1rem;
@@ -799,9 +802,9 @@ button[type="submit"]:disabled::after {
 
 /* PROJECT CARD */
 .project-card {
-  width: 100%; 
+  width: 100%;
   border: 1px solid var(--color-primary);
-  border-radius: 10px; 
+  border-radius: 10px;
   overflow: hidden;
   background: var(--color-header-bg);
 }
@@ -955,7 +958,11 @@ button[type="submit"]:disabled::after {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 70px; 
+    --header-height: 70px;
+  }
+
+  body {
+    position: relative; 
   }
 
   .content-wrapper {
@@ -963,11 +970,11 @@ button[type="submit"]:disabled::after {
   }
 
   .nav-right {
-    display: none; 
+    display: none;
   }
 
   .hamburger {
-    display: block; 
+    display: block;
   }
 
   .sidebar {
@@ -1000,7 +1007,8 @@ button[type="submit"]:disabled::after {
     padding: 1.5rem;
   }
 
-  input, textarea {
+  input,
+  textarea {
     padding: 0.8rem;
   }
 
@@ -1014,7 +1022,8 @@ button[type="submit"]:disabled::after {
     width: 100%;
   }
 
-  .cta-button-1, .cta-button-2 {
+  .cta-button-1,
+  .cta-button-2 {
     width: 20px;
     padding: 0.75rem !important;
   }
@@ -1022,7 +1031,7 @@ button[type="submit"]:disabled::after {
   .social-icons {
     position: fixed;
     left: 5px;
-    top: 50%;
+    top: 10%;
     transform: translateY(-50%);
     z-index: 1000;
     display: flex;
@@ -1030,11 +1039,10 @@ button[type="submit"]:disabled::after {
     gap: 1rem;
     padding: 0.5rem;
   }
-  
+
   .social-icons a img {
-    width: 18px;
-    height: 18px;
-    transition: transform 0.3s ease;
+    width: 20px;
+    height: 20px;
   }
 
   .accessibility-panel {
@@ -1070,6 +1078,7 @@ button[type="submit"]:disabled::after {
 
   body {
     font-size: 0.9rem;
+    position: relative;
   }
 
   .hero p {
@@ -1087,13 +1096,12 @@ button[type="submit"]:disabled::after {
     gap: 1rem;
     padding: 0.5rem;
   }
-  
+
   .social-icons a img {
     width: 18px;
     height: 18px;
-    transition: transform 0.3s ease;
   }
-  
+
   .g-recaptcha {
     transform: scale(0.85);
     transform-origin: 0 0;
