@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap:https://rikaux.com/sitemap.xml
