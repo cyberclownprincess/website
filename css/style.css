@@ -881,7 +881,7 @@ button[type="submit"]:disabled::after {
 .error-page p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  align-content: center;
+  text-align: center;
 }
 
 .error-page a.cta-button-1 {
