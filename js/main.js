@@ -405,3 +405,4 @@ function showNotification(message, type = "info") {
   document.body.appendChild(notification);
   setTimeout(() => notification.remove(), 5000);
 }
+
